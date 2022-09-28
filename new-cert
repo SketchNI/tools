@@ -1,0 +1,11 @@
+#!/bin/bash
+
+CUR_DIR=$(pwd)
+
+cd /home/sdf/easyrsa
+./easyrsa gen-req $1 nopass
+./easyrsa sign-req server $1
+echo "Public key path: /home/sdf/easyrsa/pki/issued/$1.crt"
+echo "Private key path: /home/sdf/easyrsa/pki/private/$1.key"
+
+cd $CUR_DIR
