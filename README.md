@@ -1,13 +1,10 @@
 Tools
 =====
 
-```
-**********
-** NOTE **
-**********
 
+### NOTE
 This is a duct-tape and band-aid solution to kind of emulate Laravel Valet on WSL.
-```
+
 
 ## new-cert
 A simple wrapper around easyrsa to help me quickly generate a certificate.
