@@ -1,6 +1,14 @@
 Tools
 =====
 
+```
+**********
+** NOTE **
+**********
+
+This is a duct-tape and band-aid solution to kind of emulate Laravel Valet on WSL.
+```
+
 ## new-cert
 A simple wrapper around easyrsa to help me quickly generate a certificate.
 
@@ -8,6 +16,7 @@ This script assumes `easyrsa` in your home folder `$HOME`.
 
 ## create-nginx
 **Note: This requires sudo access**
+
 Copies the contents of `/etc/nginx/stub` into a new config.
 
 See the file `stub` for contents.
