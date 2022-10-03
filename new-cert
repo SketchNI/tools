@@ -2,10 +2,10 @@
 
 CUR_DIR=$(pwd)
 
-cd /home/sdf/easyrsa
-./easyrsa gen-req $1 nopass
-./easyrsa sign-req server $1
-echo "Public key path: /home/sdf/easyrsa/pki/issued/$1.crt"
-echo "Private key path: /home/sdf/easyrsa/pki/private/$1.key"
+cd $HOME/easyrsa
+./easyrsa --batch --req-cn=$1 --days=3650 gen-req $1 nopass
+./easyrsa --batch --req-cn=$1 --days=3650 sign-req server $1
+echo "Public key path: $HOME/easyrsa/pki/issued/$1.crt"
+echo "Private key path: $HOME/easyrsa/pki/private/$1.key"
 
 cd $CUR_DIR
