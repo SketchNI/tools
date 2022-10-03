@@ -1,0 +1,30 @@
+#!/bin/bash
+
+echo "Create new project";
+echo "------------------";
+
+if [[ -z $1 ]]; then
+	echo "Invalid argument.";
+	echo "";
+	echo "Syntax: new-project <name>";
+	exit 1;
+fi
+
+if [[ $1 == *"."* ]]; then
+	echo "Invalid argument.";
+	echo "";
+	echo "Name must only contain alphanumeric, - or _ characters.";
+	exit 1;
+fi
+
+new-cert $1
+sudo $HOME/.local/bin/create-nginx $1
+composer create-project laravel/laravel $HOME/$1
+cd $HOME/$1
+composer require --dev laravel/breeze laravel/dusk laravel/telescope barryvdh/laravel-ide-helper
+composer require laravel/horizon
+php artisan breeze:install vue
+php artisan dusk:install
+php artisan telescope:install
+cp $HOME/socinest/config/ide-helper.php $HOME/$1/config/ide-helper.php
+sudo systemctl restart nginx.service
